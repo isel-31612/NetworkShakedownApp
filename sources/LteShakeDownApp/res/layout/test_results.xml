@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent">  
+    <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/testResults"        
+    />
+    <RelativeLayout
+        android:id="@+id/testResultsList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+    </RelativeLayout>
+    
+	<LinearLayout
+    	android:orientation="vertical" android:layout_width="fill_parent"
+    	android:layout_height="wrap_content">  
+	    <Button 
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:text="@string/submitTestResults"
+	    	android:textSize="20sp"
+	    	android:id="@+id/submitResultButton"
+	    />
+	    <Button 
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:text="@string/backToTestButton"
+	    	android:textSize="20sp"
+	    	android:id="@+id/backToTestButton"
+	    />
+    </LinearLayout>
+</LinearLayout>

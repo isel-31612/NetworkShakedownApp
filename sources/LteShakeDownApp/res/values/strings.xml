@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+	<!-- Blocks Names -->
+	<string name="app_name">LteShakeDownApp</string>
+	<string name="startTestActivity">Check Site tests</string>
+    <string name="testResultsActivity">View Test Results</string>
+    <string name="submitResultsActivity">Synchronize</string>
+    
+	<!-- Title and Labels -->
+	<string name="testSummary">The following tests will be executed:</string>
+	<string name="testResults">Check the test status below:</string>
+	<string name="submitTests">Fill your login and password and press send</string>
+	
+	<!-- Buttons -->
+	<string name="startTestButton">Start Test!</string>
+    <string name="backToTestButton">Back</string>
+    <string name="submitTestResults">Send results!</string>
+    
+	<!-- Texts -->
+
+</resources>

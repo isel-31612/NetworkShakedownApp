@@ -28,9 +28,9 @@
 	    <Button 
 	    	android:layout_width="fill_parent"
 	    	android:layout_height="wrap_content"
-	    	android:text="@string/backToTestButton"
+	    	android:text="@string/saveTestButton"
 	    	android:textSize="20sp"
-	    	android:id="@+id/backToTestButton"
+	    	android:id="@+id/saveTestButton"
 	    />
     </LinearLayout>
 </LinearLayout>

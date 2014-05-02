@@ -11,11 +11,14 @@
 	<string name="testSummary">The following tests will be executed:</string>
 	<string name="testResults">Check the test status below:</string>
 	<string name="submitTests">Fill your login and password and press send</string>
+	<string name="username">Username</string>
+	<string name="password">Password</string>
 	
 	<!-- Buttons -->
 	<string name="startTestButton">Start Test!</string>
-    <string name="backToTestButton">Back</string>
+    <string name="saveTestButton">Save</string>
     <string name="submitTestResults">Send results!</string>
+    <string name="storeTestResult">Save results!</string>
     
 	<!-- Texts -->
 

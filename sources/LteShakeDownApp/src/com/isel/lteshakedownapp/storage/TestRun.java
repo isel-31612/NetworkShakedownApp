@@ -10,7 +10,7 @@ import android.os.Parcelable;
 
 public class TestRun implements Parcelable {
 
-	private final List<TestResult> singleRun;
+	public final List<TestResult> singleRun;
 	
 	public TestRun(Parcel in){
 		singleRun = new ArrayList<TestResult>();
@@ -40,5 +40,4 @@ public class TestRun implements Parcelable {
 			return new TestRun[size];
 		}
 	};
-
 }

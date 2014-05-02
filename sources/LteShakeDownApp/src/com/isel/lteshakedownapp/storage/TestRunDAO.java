@@ -1,35 +1,46 @@
 package com.isel.lteshakedownapp.storage;
 
-import android.content.Context;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.BaseColumns;
 
-public class TestRunDAO extends SQLiteOpenHelper{//TODO get 2 tables, for executions and each executed test
+import com.isel.lteshakedownapp.testUnity.TestResult;
 
-	private static final int DB_VERSION = 1;
-	private static final String DB_NAME = "execution.db";
-	private static final String TABLE = "executed";
-	private static final String ID = BaseColumns._ID;
-	private static final String NAME = "txt";
-	private static final String RESULT = "source";
+public class TestRunDAO {
+	
+	private final static DateFormat sdf = SimpleDateFormat.getDateInstance();
+	private SQLiteDatabase bd;
 
-	public TestRunDAO(Context ctx){
-		super(ctx,DB_NAME,null,DB_VERSION);
+	public void insert(TestRun run){
+		if(run==null)
+			return;
+		ContentValues values = new ContentValues();
+		values.clear();
+		for(TestResult result : run.singleRun){
+			//values.put(TestRunDAO.TEST_ID, 0); AutoIncrement
+			values.put(TestRunHelper.NAME, "Name");
+			values.put(TestRunHelper.CREATED, sdf.format(new Date()));
+			values.put(TestRunHelper.RESULT, result.value);
+			bd.insertOrThrow(TestRunHelper.DB_NAME, null, values);
+		}
 	}
 	
-	@Override
-	public void onCreate(SQLiteDatabase db){
-		String sql = "create table " + TABLE + " (" + ID + " int primary key, "
-				+ RESULT + " text, " + NAME + " text)" ;
-		db.execSQL(sql);
-	}
-
-	@Override
-	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		db.execSQL("drop table if exists " + TABLE);
-		onCreate(db);
+	public void delete(TestRun run){
+		if(run==null)
+			return;
+		String[] args = {run.toString()};//TODO get ID
+		bd.delete(TestRunHelper.DB_NAME, TestRunHelper.TEST_ID + "=?", args);
 	}
 	
-	
+	public TestRun getById(int id){
+		return null;//bd.query(table, columns, selection, selectionArgs, groupBy, having, orderBy);
+	}
+	public List<TestRun> getAll(){
+		return new ArrayList<TestRun>();
+	}
 }

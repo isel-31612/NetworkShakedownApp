@@ -7,7 +7,6 @@ import java.util.Set;
 import com.isel.lteshakedownapp.R;
 import com.isel.lteshakedownapp.async.IExecutableCallbacker;
 import com.isel.lteshakedownapp.async.TestSuiteExecutor;
-import com.isel.lteshakedownapp.storage.TestRunDAO;
 import com.isel.lteshakedownapp.storage.TestRun;
 import com.isel.lteshakedownapp.testUnity.AbstractTest;
 import com.isel.lteshakedownapp.testUnity.TestResult;
@@ -24,25 +23,25 @@ import android.widget.TextView;
 import android.widget.RelativeLayout.LayoutParams;
 
 public class TestResultsActivity extends Activity {
-	private Button backToTestButton;
+	private Button saveTestButton;
 	private RelativeLayout testResultsLayout;
 	private TextView last=null;
 	private static TestSuiteExecutor testSuite = null;//synchronization problems
 	public static final String TEST_NAME_EXTRA = "TextExtra";
 	private Button submitResultButton;
 	private List<TestResult> resultList;
-	private boolean done;
+	//private boolean done;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.test_results);
 		
-		backToTestButton = (Button) findViewById(R.id.backToTestButton);
+		saveTestButton = (Button) findViewById(R.id.saveTestButton);
 		testResultsLayout = (RelativeLayout) findViewById(R.id.testResultsList);
 		submitResultButton = (Button) findViewById(R.id.submitResultButton);
 		submitResultButton.setEnabled(false);
-		setbackToTestListener();
+		saveTestListener();
 		setsubmitResultListener();
 		
 		Set<AbstractTest> tests = AbstractTest.getAllTests();
@@ -55,9 +54,11 @@ public class TestResultsActivity extends Activity {
 		}	
 	}
 	
-	private void setbackToTestListener() {
-		final Intent intent = new Intent(this,TestResultsActivity.class);
-		backToTestButton.setOnClickListener(new OnClickListener() {
+	private void saveTestListener() {
+		final Intent intent = new Intent(this,StoreResultsActivity.class);
+		TestRun extra = new TestRun(resultList); 
+		intent.putExtra(TEST_NAME_EXTRA, extra);
+		saveTestButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				startActivity(intent);
@@ -104,7 +105,7 @@ public class TestResultsActivity extends Activity {
 			}
 			@Override
 			public void informFinish() {
-				done = true;
+				//done = true;
 				submitResultButton.setEnabled(true);
 			}
 		});
